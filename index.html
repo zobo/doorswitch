@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>DOOR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function press() {
+            console.log('click')
+            document.getElementById("result").innerText = "click";
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'switch');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById("result").innerText = xhr.responseText;
+                } else {
+                    document.getElementById("result").innerText = xhr.status;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<input type="button" onclick="press()" value="Open me!" style="width: 200px; height: 100px"><div id="result"></div>
+</html>
